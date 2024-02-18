@@ -1,0 +1,225 @@
+<!-- rentalDetails.html -->
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+     <style>
+    body {
+      background: rgb(255, 255, 255);
+      font-family: "Poppins", sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 5;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      background: rgb(255, 255, 255);
+      height: 75px;
+    }
+
+    .navbar {
+      display: flex;
+      padding: 0 5px;
+      max-width: 1200px;
+      width: 100%;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .navbar input#menu-toggler {
+      display: none;
+    }
+
+    .navbar #hamburger-btn {
+      cursor: pointer;
+      display: none;
+    }
+
+    .navbar .all-links {
+      display: flex;
+      align-items: center;
+    }
+
+    .navbar .all-links li {
+      position: relative;
+      list-style: none;
+    }
+
+    .navbar .logo a {
+      display: flex;
+      align-items: center;
+      margin-left: 0;
+    }
+
+     header a{
+      margin-left: 40px;
+      text-decoration: none;
+  color: #20a099;
+      height: 80%;
+      padding: 20px 0;
+      display: inline-block;
+    }
+
+footer a {
+	  margin-left: 40px;
+  text-decoration: none;
+  color: white;
+  height: 100%;
+  padding: 20px 0;
+  display: inline-block;
+}
+
+    header a:hover, footer a:hover {
+      color: #ddd;
+    }
+
+
+
+
+
+
+
+    footer {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      background: #000;
+      padding: 1px 0;
+      position: fixed;
+      bottom: 0;
+    }
+    
+    footer span {
+  color: #fff;
+}
+
+
+.rental-details {
+    background-color: #f8f8f8;
+  padding: 40px;
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 20px auto;
+  max-width: 800px;
+  margin-top: 100px;
+}
+
+.rental-details h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333; /* Adjust the color as needed */
+}
+
+.rental-details-content {
+ text-align: center;
+  margin-top: 20px;}
+
+.rental-details-content p {
+    margin: 10px 0;
+}
+
+.rental-details-content strong {
+    color: #000; /* Adjust the color as needed */
+}
+
+.rental-details-content span {
+    font-weight: bold;
+    color: #555; /* Adjust the color as needed */
+}
+
+.rental-details a {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #20a099;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.rental-details a:hover {
+    background-color: #092937;
+}
+
+  </style>
+</head>
+
+<body>
+	
+	 <header>
+    <nav class="navbar">
+      <h2 class="logo"><a href="#">GOCAR</a></h2>
+      <input type="checkbox" id="menu-toggler">
+      <label for="menu-toggler" id="hamburger-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="24px" height="24px">
+          <path d="M0 0h24v24H0z" fill="none"/>
+          <path d="M3 18h18v-2H3v2zm0-5h18V11H3v2zm0-7v2h18V6H3z"/>
+        </svg>
+      </label>
+      <ul class="all-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#cars">Cars</a></li>
+        <li><a href="/">Log out</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <!--<section class="rental-details" id="rental-details">
+    <h2>Rental Details</h2>
+    <div class="rental-details-content">
+
+    <p><strong> Full Name: </strong><span th:text="${rental.clientFullName}"></span></p>
+    <p><strong>Car Model: </strong><span th:text="${rental.car.model}"></span></p>
+   
+       <p><strong>Car descrption: </strong><span th:text="${rental.car.description}"></span></p>
+    <p><strong>Start Date: </strong><span th:text="${rental.reservationStartDate}"></span></p>
+    <p><strong>End Date: </strong><span th:text="${rental.reservationEndDate}"></span></p>
+    <p><strong>Total Price: </strong><span th:text="${rental.totalPrice}"></span></p>
+   
+
+    <a href="/home">Go Back to Home</a>
+  </section> -->
+  
+  <section class="rental-details" id="rental-details">
+        <h2>Rental Details</h2>
+        <div class="rental-details-content">
+
+            <p><strong> Full Name: </strong><span th:text="${rental.clientFullName}"></span></p>
+            <p><strong> CIN: </strong><span th:text="${rental.CIN}"></span></p>
+            <p><strong> Phone number: </strong><span th:text="${rental.phone}"></span></p>
+            <p><strong>Car Model: </strong><span th:text="${rental.car.model}"></span></p>
+
+            <p><strong>Car description: </strong><span th:text="${rental.car.description}"></span></p>
+            <p><strong>Start Date: </strong><span th:text="${rental.reservationStartDate}"></span></p>
+            <p><strong>End Date: </strong><span th:text="${rental.reservationEndDate}"></span></p>
+            <p><strong>Total Price: </strong><span th:text="${rental.totalPrice}"></span></p>
+            
+            <!-- Contract Details -->
+            <p><strong>Contract ID: </strong><span th:text="${contract.id}"></span></p>
+            
+
+            <a href="/home">Go Back to Home</a>
+        </div>
+    </section>
+      <footer>
+    <div>
+      <span>Copyright © 2023 All Rights Reserved</span>
+      <span class="link">
+        <a href="#">Home</a>
+        <a href="#contact">Contact</a>
+      </span>
+    </div>
+  </footer>
+</body>
+
+</html>

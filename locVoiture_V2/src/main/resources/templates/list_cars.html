@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Manager Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+          <script src="https://kit.fontawesome.com/179f7f8748.js" crossorigin="anonymous"></script>
+
+     <style>
+            body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .sidebar {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: 0;
+  background: linear-gradient(45deg, #092937, #124853, #1a6d7a, #239ba8, #2bc8c8);
+
+            padding-top: 50px;
+            border-top-right-radius: 40px;
+        }
+
+        .sidebar h2 a {
+            color: white;
+           
+            padding: 40px;
+           
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .sidebar ul li a {
+            text-decoration: none;
+            color: white;
+            display: block;
+        }
+
+        .content {
+            margin-left: 250px;
+            padding: 20px;
+        }
+
+        header {
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+
+        .main-content {
+            background-color: #fff;
+            padding: 20px;
+        }
+        
+        /* Additional CSS for styling the table */
+.user-table {
+    width: 1000px;
+  /*  border-collapse: collapse;*/
+  border-style: groove;
+    margin-top: 20px;
+    margin-left: 25%;
+}
+
+.user-table th, .user-table td {
+    
+    padding: 8px;
+    text-align: left;
+    
+}
+
+.user-table th {
+    background-color: #f2f2f2;
+  
+    color: #333;
+}
+
+
+
+.user-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.user-table tr:hover {
+    background-color: #ddd;
+}
+
+ .fa-trash{
+	color: red;
+}
+ .fa-pen{
+	color: green;
+}
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+  <h2><a th:href="@{/manager}">Manager Dash</a></h2>        <ul>
+         <li><a href="#" th:href="@{/manager/addCar}" >Add car</a></li>
+            <li><a href="#" th:href="@{/manager/allcars}">List cars</a></li>
+          <li><a th:href="@{/manager/rentals}">Rentals</a></li>
+            <li><a href="#" th:href="@{/manager/login}">Log out</a></li>
+        </ul>
+    </div>
+
+   <div class="main-content" id="page-content">
+    <h2>Cars List</h2>
+    <table class="user-table">
+        <thead>
+            <tr>
+				<th>Id</th>
+                <th>Model</th>
+                <th>Matricule</th>
+                <th>Color</th>
+                <th>Number of doors</th>
+                <th>Price per day</th>
+                <th>Date of technical visit</th>
+                <th>Description</th>
+              
+                <th>Actions</th>
+            </tr>
+        </thead>
+         <tr th:each="cs:${allcars}">
+            <td th:text="${cs.ID_C}"></td>
+            <td th:text="${cs.model}"></td>
+            <td th:text="${cs.matricule}">"</td>
+            <td th:text="${cs.color}">"</td>
+            <td th:text="${cs.nbDoors}">"</td>
+            <td th:text="${cs.price}">"</td>
+            <td th:text="${cs.techVisit}">"</td>
+            <td th:text="${cs.description}">"</td>
+            
+    
+            <td>
+				 <a th:href="@{/delete/car/{id}(id=${cs.ID_C})}"><i class="fa-solid fa-trash"></i></a>&nbsp;&nbsp;&nbsp;
+            <a th:href="@{/manager/editcar/{id}(id=${cs.ID_C})}" ><i class="fa-solid fa-pen"></i></a>
+            </td>
+         
+         
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+  
+
+   
+</body>
+</html>
